@@ -1,1 +1,1533 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico Estratégico — Nayara Cortez</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --azul: #3B4CC0;
+  --azul-escuro: #1E2A78;
+  --azul-claro: #E8EDFF;
+  --azul-medio: #6070D4;
+  --cinza: #6B7280;
+  --cinza-claro: #F5F6FA;
+  --cinza-borda: #E5E7EB;
+  --preto: #111827;
+  --branco: #FFFFFF;
+  --verde: #059669;
+  --vermelho: #DC2626;
+  --amarelo: #D97706;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: #F8F9FC;
+  color: var(--preto);
+  font-size: 14px;
+  line-height: 1.7;
+}
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  background: var(--branco);
+  border-bottom: 1px solid var(--cinza-borda);
+  z-index: 100;
+  padding: 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nav-logo-svg {
+  width: 28px;
+  height: 28px;
+}
+.nav-brand {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--azul-escuro);
+  letter-spacing: 0.02em;
+}
+.nav-brand span {
+  font-weight: 400;
+  color: var(--cinza);
+}
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cinza);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--azul); }
+/* LAYOUT */
+.page { max-width: 900px; margin: 0 auto; padding: 80px 2rem 4rem; }
+/* CAPA */
+.capa {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 2rem 4rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.capa-topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 5rem;
+}
+.capa-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--azul);
+  background: var(--azul-claro);
+  padding: 6px 14px;
+  border-radius: 20px;
+}
+.capa-data {
+  font-size: 11px;
+  color: var(--cinza);
+  font-weight: 500;
+}
+.capa-linha {
+  width: 48px;
+  height: 2px;
+  background: var(--azul);
+  margin-bottom: 2rem;
+}
+.capa-titulo {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 800;
+  color: var(--azul-escuro);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+.capa-titulo span {
+  color: var(--azul);
+}
+.capa-subtitulo {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--cinza);
+  max-width: 480px;
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+.capa-info {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.capa-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.capa-info-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cinza);
+}
+.capa-info-valor {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--preto);
+}
+.capa-rodape {
+  margin-top: auto;
+  padding-top: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--cinza-borda);
+}
+.capa-rodape-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--azul-escuro);
+}
+.ym-symbol {
+  width: 24px;
+  height: 24px;
+}
+.capa-rodape-texto {
+  font-size: 11px;
+  color: var(--cinza);
+}
+/* SEÇÕES */
+.secao {
+  padding: 5rem 0;
+  border-bottom: 1px solid var(--cinza-borda);
+}
+.secao:last-child { border-bottom: none; }
+.secao-numero {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--azul);
+  margin-bottom: 0.5rem;
+}
+.secao-titulo {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--azul-escuro);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+.secao-subtitulo {
+  font-size: 14px;
+  color: var(--cinza);
+  margin-bottom: 2.5rem;
+  max-width: 560px;
+}
+/* CARDS */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+.grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+@media (max-width: 600px) {
+  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  nav { display: none; }
+  .capa-topo { flex-direction: column; align-items: flex-start; gap: 1rem; }
+}
+.card {
+  background: var(--branco);
+  border: 1px solid var(--cinza-borda);
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+.card-azul {
+  background: var(--azul-claro);
+  border: 1px solid #C7D0FF;
+  border-radius: 12px;
+  padding: 1.5rem;
+}
+.card-destaque {
+  background: var(--azul-escuro);
+  border-radius: 12px;
+  padding: 2rem;
+  color: var(--branco);
+}
+.card-titulo {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--cinza);
+  margin-bottom: 1rem;
+}
+.card-titulo-branco {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 1rem;
+}
+.card-valor {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--azul-escuro);
+  line-height: 1;
+}
+.card-valor-branco {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--branco);
+  line-height: 1;
+}
+.card-desc {
+  font-size: 12px;
+  color: var(--cinza);
+  margin-top: 0.25rem;
+}
+.card-desc-branco {
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 0.25rem;
+}
+/* BADGES */
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.badge-verde { background: #D1FAE5; color: #065F46; }
+.badge-vermelho { background: #FEE2E2; color: #991B1B; }
+.badge-amarelo { background: #FEF3C7; color: #92400E; }
+.badge-azul { background: var(--azul-claro); color: var(--azul-escuro); }
+.badge-cinza { background: #F3F4F6; color: #4B5563; }
+/* LISTAS */
+.lista-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 0.75rem;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--preto);
+}
+.lista-item-check {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.check-verde { background: #D1FAE5; color: #059669; }
+.check-vermelho { background: #FEE2E2; color: #DC2626; }
+.check-azul { background: var(--azul-claro); color: var(--azul); }
+.check-amarelo { background: #FEF3C7; color: #D97706; }
+/* TABELA */
+.tabela {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 1.5rem 0;
+}
+.tabela th {
+  background: var(--cinza-claro);
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--cinza);
+  border-bottom: 1px solid var(--cinza-borda);
+}
+.tabela td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--cinza-borda);
+  vertical-align: top;
+  line-height: 1.5;
+}
+.tabela tr:last-child td { border-bottom: none; }
+/* BARRA DE PROGRESSO */
+.barra-wrap {
+  margin-bottom: 1rem;
+}
+.barra-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.barra-track {
+  height: 6px;
+  background: var(--cinza-borda);
+  border-radius: 3px;
+  overflow: hidden;
+}
+.barra-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--azul);
+}
+/* DESTAQUE TEXT */
+.texto-destaque {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--azul-escuro);
+  border-left: 3px solid var(--azul);
+  padding-left: 1.25rem;
+  margin: 2rem 0;
+  line-height: 1.5;
+}
+.texto-normal {
+  font-size: 13.5px;
+  color: var(--cinza);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+/* SEPARADOR */
+.sep {
+  height: 1px;
+  background: var(--cinza-borda);
+  margin: 2rem 0;
+}
+/* PILAR */
+.pilar-card {
+  background: var(--branco);
+  border: 1px solid var(--cinza-borda);
+  border-radius: 12px;
+  padding: 1.25rem;
+  border-top: 3px solid var(--azul);
+}
+.pilar-numero {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--azul);
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+.pilar-nome {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--azul-escuro);
+  margin-bottom: 6px;
+}
+.pilar-desc {
+  font-size: 12px;
+  color: var(--cinza);
+  line-height: 1.6;
+}
+/* CALENDÁRIO */
+.dia-card {
+  background: var(--branco);
+  border: 1px solid var(--cinza-borda);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.dia-header {
+  background: var(--azul-escuro);
+  color: var(--branco);
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+.dia-body { padding: 12px 14px; }
+.dia-item {
+  font-size: 12px;
+  color: var(--preto);
+  padding: 5px 0;
+  border-bottom: 1px solid var(--cinza-borda);
+  line-height: 1.5;
+}
+.dia-item:last-child { border-bottom: none; }
+.dia-tag {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  margin-right: 4px;
+}
+/* MOCKUP INSTAGRAM */
+.insta-mockup {
+  background: var(--branco);
+  border: 1px solid var(--cinza-borda);
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 340px;
+  font-size: 12px;
+}
+.insta-header {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--cinza-borda);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.insta-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--azul-claro), var(--azul-medio));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--azul-escuro);
+  flex-shrink: 0;
+}
+.insta-nome { font-weight: 700; font-size: 13px; }
+.insta-handle { font-size: 11px; color: var(--cinza); }
+.insta-bio { padding: 10px 14px; border-bottom: 1px solid var(--cinza-borda); line-height: 1.6; }
+.insta-bio strong { color: var(--azul-escuro); font-weight: 700; }
+.insta-stats {
+  display: flex;
+  padding: 10px 14px;
+  gap: 1rem;
+  border-bottom: 1px solid var(--cinza-borda);
+}
+.insta-stat { text-align: center; }
+.insta-stat-num { font-weight: 700; display: block; }
+.insta-stat-label { font-size: 10px; color: var(--cinza); }
+.insta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  padding: 2px;
+}
+.insta-cell {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--branco);
+}
+.reel-indicator {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 10px;
+}
+/* ANTES DEPOIS */
+.antes-depois {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+.antes-label {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 8px;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+.label-antes { background: #FEE2E2; color: #991B1B; }
+.label-depois { background: #D1FAE5; color: #065F46; }
+/* CHECKLIST */
+.checklist-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--cinza-borda);
+  font-size: 13px;
+}
+.checklist-item:last-child { border-bottom: none; }
+.check-box {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 700;
+}
+/* ROADMAP */
+.roadmap-item {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.roadmap-linha {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.roadmap-circulo {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--azul);
+  color: var(--branco);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.roadmap-reta {
+  width: 2px;
+  flex: 1;
+  background: var(--cinza-borda);
+  margin-top: 4px;
+}
+.roadmap-conteudo {
+  padding-bottom: 2rem;
+}
+.roadmap-prazo {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--azul);
+  margin-bottom: 4px;
+}
+.roadmap-titulo {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--azul-escuro);
+  margin-bottom: 8px;
+}
+/* SCORE CARD */
+.score-wrap {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.score-label {
+  font-size: 13px;
+  font-weight: 600;
+  min-width: 140px;
+}
+.score-barra {
+  flex: 1;
+  height: 8px;
+  background: var(--cinza-borda);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.score-fill {
+  height: 100%;
+  border-radius: 4px;
+}
+.score-valor {
+  font-size: 13px;
+  font-weight: 700;
+  min-width: 30px;
+  text-align: right;
+}
+/* CITATION BLOCK */
+.citacao {
+  background: var(--azul-claro);
+  border-left: 4px solid var(--azul);
+  padding: 1.25rem 1.5rem;
+  border-radius: 0 10px 10px 0;
+  margin: 1.5rem 0;
+  font-size: 15px;
+  font-style: italic;
+  color: var(--azul-escuro);
+  font-weight: 500;
+  line-height: 1.6;
+}
+/* PRINT */
+@media print {
+  nav { display: none !important; }
+  .capa { min-height: auto; page-break-after: always; }
+  .secao { page-break-inside: avoid; }
+  body { background: white; font-size: 12px; }
+  .card-destaque { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
 
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <svg class="nav-logo-svg" viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 5L30 45L55 5" stroke="#3B4CC0" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="30" cy="62" r="7" fill="#3B4CC0"/>
+    </svg>
+    <div>
+      <div class="nav-brand">YM Marketing <span>& Negócios</span></div>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#posicionamento">Posicionamento</a></li>
+    <li><a href="#instagram">Instagram</a></li>
+    <li><a href="#site">Site</a></li>
+    <li><a href="#conteudo">Conteúdo</a></li>
+    <li><a href="#oportunidades">Oportunidades</a></li>
+    <li><a href="#plano">Plano</a></li>
+    <li><a href="#calendario">Calendário</a></li>
+  </ul>
+</nav>
+
+<!-- CAPA -->
+<div class="capa">
+  <div class="capa-topo">
+    <span class="capa-tag">Diagnóstico Estratégico Digital</span>
+    <span class="capa-data">Maio / 2025 — Confidencial</span>
+  </div>
+
+  <div class="capa-linha"></div>
+
+  <h1 class="capa-titulo">
+    Nayara Cortez<br>
+    <span>Fisioterapia</span><br>
+    & Pilates
+  </h1>
+  <p class="capa-subtitulo">
+    Uma análise completa da sua presença digital, posicionamento e roadmap estratégico para transformar autoridade real em crescimento sustentável.
+  </p>
+
+  <div class="capa-info">
+    <div class="capa-info-item">
+      <span class="capa-info-label">Elaborado por</span>
+      <span class="capa-info-valor">YM Marketing & Negócios</span>
+    </div>
+    <div class="capa-info-item">
+      <span class="capa-info-label">Profissional</span>
+      <span class="capa-info-valor">Nayara Cortez</span>
+    </div>
+    <div class="capa-info-item">
+      <span class="capa-info-label">Segmento</span>
+      <span class="capa-info-valor">Fisioterapia & Pilates Clínico</span>
+    </div>
+    <div class="capa-info-item">
+      <span class="capa-info-label">Localização</span>
+      <span class="capa-info-valor">Barreiro / Tirol — BH</span>
+    </div>
+  </div>
+
+  <div class="capa-rodape">
+    <div class="capa-rodape-logo">
+      <svg class="ym-symbol" viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 5L30 45L55 5" stroke="#3B4CC0" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <circle cx="30" cy="62" r="7" fill="#3B4CC0"/>
+      </svg>
+      YM Marketing & Negócios
+    </div>
+    <span class="capa-rodape-texto">Material confidencial — uso exclusivo da cliente</span>
+  </div>
+</div>
+
+<!-- SEÇÃO: APRESENTAÇÃO -->
+<div class="page">
+<section class="secao" id="apresentacao">
+  <div class="secao-numero">00 — Apresentação</div>
+  <h2 class="secao-titulo">O que é este material</h2>
+  <p class="secao-subtitulo">Uma leitura estratégica honesta sobre onde você está, onde pode chegar e o que fazer para isso.</p>
+
+  <div class="texto-destaque">
+    "Você já possui tudo que uma clínica premium precisa. O que falta é mostrar isso com a clareza e a estratégia que o seu trabalho merece."
+  </div>
+
+  <p class="texto-normal">
+    Este diagnóstico foi construído com base na análise do seu perfil no Instagram (@fisio.nayaracortez), do seu site (nayaracortezfisio.com.br), da sua presença no Google e das informações sobre sua rotina, seu perfil de paciente e seus resultados reais.
+  </p>
+  <p class="texto-normal">
+    Ele não é um relatório de problemas. É um mapa de oportunidades — com ações concretas e priorizadas para você crescer de forma sustentável, sem depender só de você mesma para operar.
+  </p>
+
+  <div class="sep"></div>
+
+  <div class="grid-4">
+    <div class="card" style="text-align:center; border-top: 3px solid var(--azul);">
+      <div class="card-titulo">Seções</div>
+      <div class="card-valor" style="font-size:2.2rem;">10</div>
+      <div class="card-desc">análises e entregas</div>
+    </div>
+    <div class="card" style="text-align:center; border-top: 3px solid var(--verde);">
+      <div class="card-titulo">Pontos Fortes</div>
+      <div class="card-valor" style="font-size:2.2rem; color: var(--verde);">14</div>
+      <div class="card-desc">ativos estratégicos mapeados</div>
+    </div>
+    <div class="card" style="text-align:center; border-top: 3px solid var(--amarelo);">
+      <div class="card-titulo">Oportunidades</div>
+      <div class="card-valor" style="font-size:2.2rem; color: var(--amarelo);">9</div>
+      <div class="card-desc">pilares de crescimento</div>
+    </div>
+    <div class="card" style="text-align:center; border-top: 3px solid #8B5CF6;">
+      <div class="card-titulo">Pilares</div>
+      <div class="card-valor" style="font-size:2.2rem; color: #8B5CF6;">6</div>
+      <div class="card-desc">de conteúdo estratégico</div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO: POSICIONAMENTO -->
+<section class="secao" id="posicionamento">
+  <div class="secao-numero">01 — Posicionamento</div>
+  <h2 class="secao-titulo">Análise de Posicionamento</h2>
+  <p class="secao-subtitulo">Como você é percebida hoje versus como deveria ser percebida.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-titulo" style="color: var(--vermelho);">⚠ Percepção Atual</div>
+      <div class="lista-item"><span class="lista-item-check check-vermelho">✗</span> Fisioterapeuta local "comum"</div>
+      <div class="lista-item"><span class="lista-item-check check-vermelho">✗</span> Posicionamento genérico sem nicho claro</div>
+      <div class="lista-item"><span class="lista-item-check check-vermelho">✗</span> Valor percebido não acompanha o real</div>
+      <div class="lista-item"><span class="lista-item-check check-vermelho">✗</span> Sem narrativa ou diferencial comunicado</div>
+      <div class="lista-item"><span class="lista-item-check check-vermelho">✗</span> Confunde pilates clínico com fitness</div>
+    </div>
+    <div class="card">
+      <div class="card-titulo" style="color: var(--verde);">✦ Percepção Ideal</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">✓</span> Referência em Pilates Clínico no Barreiro</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">✓</span> Especialista em saúde do idoso e reabilitação</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">✓</span> Clínica premium com método próprio</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">✓</span> Marca humanizada que gera confiança</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">✓</span> Profissional que forma equipe e escala</div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="secao-numero" style="margin-bottom:1rem;">Score de Posicionamento Atual</div>
+  <div class="card">
+    <div class="score-wrap">
+      <span class="score-label">Autoridade Digital</span>
+      <div class="score-barra"><div class="score-fill" style="width:30%; background:#DC2626;"></div></div>
+      <span class="score-valor" style="color:#DC2626;">3/10</span>
+    </div>
+    <div class="score-wrap">
+      <span class="score-label">Clareza de Nicho</span>
+      <div class="score-barra"><div class="score-fill" style="width:40%; background:#D97706;"></div></div>
+      <span class="score-valor" style="color:#D97706;">4/10</span>
+    </div>
+    <div class="score-wrap">
+      <span class="score-label">Percepção de Valor</span>
+      <div class="score-barra"><div class="score-fill" style="width:35%; background:#DC2626;"></div></div>
+      <span class="score-valor" style="color:#DC2626;">3.5/10</span>
+    </div>
+    <div class="score-wrap">
+      <span class="score-label">Prova Social Visual</span>
+      <div class="score-barra"><div class="score-fill" style="width:60%; background:#D97706;"></div></div>
+      <span class="score-valor" style="color:#D97706;">6/10</span>
+    </div>
+    <div class="score-wrap">
+      <span class="score-label">Consistência Editorial</span>
+      <div class="score-barra"><div class="score-fill" style="width:20%; background:#DC2626;"></div></div>
+      <span class="score-valor" style="color:#DC2626;">2/10</span>
+    </div>
+    <div class="score-wrap">
+      <span class="score-label">SEO e Visibilidade Local</span>
+      <div class="score-barra"><div class="score-fill" style="width:70%; background:#059669;"></div></div>
+      <span class="score-valor" style="color:#059669;">7/10</span>
+    </div>
+    <div class="score-wrap">
+      <span class="score-label">Conexão Humanizada</span>
+      <div class="score-barra"><div class="score-fill" style="width:80%; background:#059669;"></div></div>
+      <span class="score-valor" style="color:#059669;">8/10</span>
+    </div>
+  </div>
+
+  <div class="citacao" style="margin-top:2rem;">
+    O problema não é a qualidade do seu trabalho. É que a sua comunicação digital não consegue traduzir o que você realmente entrega.
+  </div>
+</section>
+
+<!-- SEÇÃO: INSTAGRAM -->
+<section class="secao" id="instagram">
+  <div class="secao-numero">02 — Instagram</div>
+  <h2 class="secao-titulo">Análise do Instagram</h2>
+  <p class="secao-subtitulo">Diagnóstico completo do @fisio.nayaracortez — o que funciona, o que trava e o que pode transformar.</p>
+
+  <div class="grid-2">
+    <!-- ANTES -->
+    <div>
+      <div class="antes-label label-antes">Perfil Atual</div>
+      <div class="insta-mockup">
+        <div class="insta-header">
+          <div class="insta-avatar">NC</div>
+          <div>
+            <div class="insta-nome">Nayara Cortez</div>
+            <div class="insta-handle">@fisio.nayaracortez</div>
+          </div>
+        </div>
+        <div class="insta-bio">
+          <div style="font-size:11.5px; color: #6B7280;">
+            Pilates Clínico - prevenção e reabilitação com movimento seguro e eficaz<br>
+            Saúde do idoso no conforto de casa 💙<br>
+            👉 Para mais informações:<br>
+            <span style="color: var(--azul);">linktr.ee/NayaraCortez</span>
+          </div>
+        </div>
+        <div class="insta-stats">
+          <div class="insta-stat"><span class="insta-stat-num">296</span><span class="insta-stat-label">posts</span></div>
+          <div class="insta-stat"><span class="insta-stat-num">951</span><span class="insta-stat-label">seguidores</span></div>
+          <div class="insta-stat"><span class="insta-stat-num">827</span><span class="insta-stat-label">seguindo</span></div>
+        </div>
+        <div style="padding: 8px 14px 4px; font-size: 10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color: var(--cinza); border-bottom:1px solid var(--cinza-borda);">Destaques</div>
+        <div style="display:flex; gap:10px; padding:10px 14px; overflow-x:auto; border-bottom:1px solid var(--cinza-borda);">
+          <div style="text-align:center; flex-shrink:0;"><div style="width:44px;height:44px;border-radius:50%;background:var(--cinza-borda);margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--cinza);">📸</div><span style="font-size:9px;color:var(--cinza);">Café Pilat...</span></div>
+          <div style="text-align:center; flex-shrink:0;"><div style="width:44px;height:44px;border-radius:50%;background:var(--cinza-borda);margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--cinza);">⭐</div><span style="font-size:9px;color:var(--cinza);">Feedback</span></div>
+          <div style="text-align:center; flex-shrink:0;"><div style="width:44px;height:44px;border-radius:50%;background:var(--cinza-borda);margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--cinza);">❓</div><span style="font-size:9px;color:var(--cinza);">Perguntas</span></div>
+          <div style="text-align:center; flex-shrink:0;"><div style="width:44px;height:44px;border-radius:50%;background:var(--cinza-borda);margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--cinza);">📍</div><span style="font-size:9px;color:var(--cinza);">Onde Atendo</span></div>
+        </div>
+        <div style="padding:8px 14px 4px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color: var(--cinza);">Feed atual (fixados)</div>
+        <div class="insta-grid">
+          <div class="insta-cell" style="background: #1E2A78; position:relative;">
+            <span style="font-size:9px; text-align:center; padding:4px;">Logo Identidade Visual</span>
+          </div>
+          <div class="insta-cell" style="background:#4B5563;">📦</div>
+          <div class="insta-cell" style="background:#374151;">🏃</div>
+          <div class="insta-cell" style="background:#4B5563;">🌅</div>
+          <div class="insta-cell" style="background:#374151;">🏃</div>
+          <div class="insta-cell" style="background:#6B7280;">🌸</div>
+        </div>
+        <div style="padding:10px 14px; background:#FEF9EC; border-top: 1px solid #FCD34D;">
+          <span style="font-size:10px; color:#92400E; font-weight:600;">⚠ Fixado: explica identidade visual — não gera valor estratégico</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- DEPOIS -->
+    <div>
+      <div class="antes-label label-depois">Perfil Proposto</div>
+      <div class="insta-mockup">
+        <div class="insta-header">
+          <div class="insta-avatar" style="background: linear-gradient(135deg, #3B4CC0, #6070D4);">
+            <span style="color:white;">NC</span>
+          </div>
+          <div>
+            <div class="insta-nome">Nayara Cortez · Fisioterapeuta</div>
+            <div class="insta-handle">@fisio.nayaracortez</div>
+          </div>
+        </div>
+        <div class="insta-bio">
+          <div style="font-size:11.5px; color: var(--preto); line-height:1.7;">
+            <strong>Fisioterapeuta | Pilates Clínico 🩵</strong><br>
+            Reabilitação + movimento seguro para idosos<br>
+            📍 Tirol · Barreiro · BH<br>
+            ✦ Agenda: link abaixo 👇
+          </div>
+        </div>
+        <div class="insta-stats">
+          <div class="insta-stat"><span class="insta-stat-num">~80</span><span class="insta-stat-label">posts/ano</span></div>
+          <div class="insta-stat"><span class="insta-stat-num">3k+</span><span class="insta-stat-label">meta 12m</span></div>
+          <div class="insta-stat"><span class="insta-stat-num">↑</span><span class="insta-stat-label">autoridade</span></div>
+        </div>
+        <div style="padding: 8px 14px 4px; font-size: 10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color: var(--cinza); border-bottom:1px solid var(--cinza-borda);">Destaques Estratégicos</div>
+        <div style="display:flex; gap:10px; padding:10px 14px; overflow-x:auto; border-bottom:1px solid var(--cinza-borda);">
+          <div style="text-align:center; flex-shrink:0;"><div style="width:44px;height:44px;border-radius:50%;background:#E8EDFF;border:2px solid var(--azul);margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--azul); font-weight:700;">✦</div><span style="font-size:9px;color:var(--azul);font-weight:700;">Método</span></div>
+          <div style="text-align:center; flex-shrink:0;"><div style="width:44px;height:44px;border-radius:50%;background:#D1FAE5;border:2px solid var(--verde);margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--verde);font-weight:700;">★</div><span style="font-size:9px;color:var(--verde);font-weight:700;">Resultados</span></div>
+          <div style="text-align:center; flex-shrink:0;"><div style="width:44px;height:44px;border-radius:50%;background:#FEF3C7;border:2px solid var(--amarelo);margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--amarelo);font-weight:700;">💬</div><span style="font-size:9px;color:var(--amarelo);font-weight:700;">Depoimentos</span></div>
+          <div style="text-align:center; flex-shrink:0;"><div style="width:44px;height:44px;border-radius:50%;background:#F3E8FF;border:2px solid #9333EA;margin:0 auto 4px;display:flex;align-items:center;justify-content:center;font-size:9px;color:#9333EA;font-weight:700;">📋</div><span style="font-size:9px;color:#9333EA;font-weight:700;">Agenda</span></div>
+        </div>
+        <div style="padding:8px 14px 4px; font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:0.08em; color: var(--cinza);">Feed Proposto (fixados)</div>
+        <div class="insta-grid">
+          <div class="insta-cell" style="background:#1E2A78; font-size:8px; padding:4px; text-align:center;">ANTES E DEPOIS PACIENTE</div>
+          <div class="insta-cell" style="background:#3B4CC0; font-size:8px; padding:4px; text-align:center;">APRESENTAÇÃO NAYARA</div>
+          <div class="insta-cell" style="background:#6070D4; font-size:8px; padding:4px; text-align:center;">MÉTODO PILATES CLÍNICO</div>
+          <div class="insta-cell" style="background:#059669; font-size:8px; padding:4px; text-align:center;">DEPOIMENTO REAL ⭐</div>
+          <div class="insta-cell" style="background:#0F766E; font-size:8px; padding:4px; text-align:center;">DOR QUE VOCÊ TRATA</div>
+          <div class="insta-cell" style="background:#065F46; font-size:8px; padding:4px; text-align:center;">AGENDE SUA AVALIAÇÃO</div>
+        </div>
+        <div style="padding:10px 14px; background:#D1FAE5; border-top: 1px solid #6EE7B7;">
+          <span style="font-size:10px; color:#065F46; font-weight:600;">✓ Fixados geram autoridade + conversão desde o primeiro acesso</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <div class="secao-numero" style="margin-bottom:1rem;">Diagnóstico Detalhado — Instagram</div>
+  <table class="tabela">
+    <thead>
+      <tr>
+        <th>Elemento</th>
+        <th>Situação Atual</th>
+        <th>Status</th>
+        <th>Proposta</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Bio</strong></td>
+        <td>Menciona pilates clínico mas sem hierarquia visual, sem CTA claro, sem gatilho</td>
+        <td><span class="badge badge-amarelo">Parcial</span></td>
+        <td>Bio com cargo + nicho + localização + CTA direto para agenda</td>
+      </tr>
+      <tr>
+        <td><strong>Posts Fixados</strong></td>
+        <td>Um explica identidade visual — não gera valor nem conversão</td>
+        <td><span class="badge badge-vermelho">Crítico</span></td>
+        <td>3 fixados: apresentação, método, depoimento/CTA</td>
+      </tr>
+      <tr>
+        <td><strong>Destaques</strong></td>
+        <td>Existem, porém sem hierarquia estratégica clara</td>
+        <td><span class="badge badge-amarelo">Parcial</span></td>
+        <td>Método, Resultados, Depoimentos, FAQ, Agenda — com capas padronizadas</td>
+      </tr>
+      <tr>
+        <td><strong>Feed (estética)</strong></td>
+        <td>Mistura de posts pessoais, profissionais e aleatórios sem coesão visual</td>
+        <td><span class="badge badge-vermelho">Crítico</span></td>
+        <td>Identidade visual consistente com paleta e tipografia definidas</td>
+      </tr>
+      <tr>
+        <td><strong>Pilares editoriais</strong></td>
+        <td>Inexistentes — conteúdo aleatório sem estratégia</td>
+        <td><span class="badge badge-vermelho">Crítico</span></td>
+        <td>6 pilares com lógica de funil (ver Seção 07)</td>
+      </tr>
+      <tr>
+        <td><strong>Stories</strong></td>
+        <td>Feitos por "obrigação" sem intenção estratégica</td>
+        <td><span class="badge badge-vermelho">Crítico</span></td>
+        <td>Rotina leve de 3–4x/semana com contexto definido</td>
+      </tr>
+      <tr>
+        <td><strong>Reels</strong></td>
+        <td>Existem alguns, mas sem hook, estrutura ou objetivo</td>
+        <td><span class="badge badge-amarelo">Parcial</span></td>
+        <td>2 Reels/semana com roteiro simples e objetivo claro</td>
+      </tr>
+      <tr>
+        <td><strong>CTA</strong></td>
+        <td>Raramente presente, quando aparece é genérico</td>
+        <td><span class="badge badge-vermelho">Crítico</span></td>
+        <td>CTA específico por formato (agende, salva, comenta, manda DM)</td>
+      </tr>
+      <tr>
+        <td><strong>Prova Social</strong></td>
+        <td>Feedbacks existem mas não são apresentados estrategicamente</td>
+        <td><span class="badge badge-amarelo">Parcial</span></td>
+        <td>1 depoimento/semana tratado como conteúdo de autoridade</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- SEÇÃO: SITE -->
+<section class="secao" id="site">
+  <div class="secao-numero">03 — Site</div>
+  <h2 class="secao-titulo">Análise do Site</h2>
+  <p class="secao-subtitulo">nayaracortezfisio.com.br — o que funciona, o que trava e o que precisa evoluir.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-titulo" style="color: var(--verde);">O que já funciona</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">✓</span> Site existe e está indexado no Google</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">✓</span> Aparece na 1ª página para "nayara cortez pilates"</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">✓</span> Identidade visual já aplicada</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">✓</span> Google Meu Negócio com 50 avaliações 5 estrelas</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">✓</span> Endereço e telefone claros</div>
+    </div>
+    <div class="card">
+      <div class="card-titulo" style="color: var(--vermelho);">O que precisa evoluir</div>
+      <div class="lista-item"><span class="lista-item-check check-vermelho">✗</span> Não comunica o método ou os diferenciais</div>
+      <div class="lista-item"><span class="lista-item-check check-vermelho">✗</span> Sem seção de casos reais ou transformações</div>
+      <div class="lista-item"><span class="lista-item-check check-vermelho">✗</span> Sem prova social visual (depoimentos em destaque)</div>
+      <div class="lista-item"><span class="lista-item-check check-vermelho">✗</span> Sem especialidades claramente listadas</div>
+      <div class="lista-item"><span class="lista-item-check check-vermelho">✗</span> CTA de agendamento fraco ou inexistente</div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+  <div class="secao-numero" style="margin-bottom:1rem;">Oportunidades de Melhoria — Site</div>
+
+  <table class="tabela">
+    <thead>
+      <tr><th>Seção</th><th>O que adicionar</th><th>Impacto</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Hero (topo)</strong></td>
+        <td>Frase de posicionamento clara + foto profissional + botão de agendamento</td>
+        <td><span class="badge badge-vermelho">Alto</span></td>
+      </tr>
+      <tr>
+        <td><strong>Sobre Nayara</strong></td>
+        <td>História, formação, valores, porque escolheu fisioterapia — humaniza e conecta</td>
+        <td><span class="badge badge-vermelho">Alto</span></td>
+      </tr>
+      <tr>
+        <td><strong>Especialidades</strong></td>
+        <td>Cards por dor tratada: dor lombar, reabilitação, saúde do idoso, pilates clínico</td>
+        <td><span class="badge badge-vermelho">Alto</span></td>
+      </tr>
+      <tr>
+        <td><strong>Método</strong></td>
+        <td>Como funciona o atendimento, o que diferencia da clínica comum</td>
+        <td><span class="badge badge-amarelo">Médio</span></td>
+      </tr>
+      <tr>
+        <td><strong>Depoimentos</strong></td>
+        <td>Mínimo 6 depoimentos reais com foto e nome (com autorização)</td>
+        <td><span class="badge badge-vermelho">Alto</span></td>
+      </tr>
+      <tr>
+        <td><strong>Galeria</strong></td>
+        <td>Fotos da clínica, equipamentos, pacientes em aula (com autorização)</td>
+        <td><span class="badge badge-amarelo">Médio</span></td>
+      </tr>
+      <tr>
+        <td><strong>CTA fixo</strong></td>
+        <td>Botão flutuante de WhatsApp em todas as páginas</td>
+        <td><span class="badge badge-vermelho">Alto</span></td>
+      </tr>
+      <tr>
+        <td><strong>SEO Local</strong></td>
+        <td>Títulos e descrições com "Pilates Clínico Barreiro", "Fisioterapeuta Tirol BH"</td>
+        <td><span class="badge badge-amarelo">Médio</span></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- SEÇÃO: CONTEÚDO -->
+<section class="secao" id="conteudo">
+  <div class="secao-numero">04 — Conteúdo</div>
+  <h2 class="secao-titulo">Análise de Conteúdo</h2>
+  <p class="secao-subtitulo">O problema não é quantidade. É a ausência de estratégia, funil e narrativa.</p>
+
+  <div class="texto-destaque">
+    Você já tem videomaker. Você já grava. O problema é que não existe direcionamento para o que gravar, por que gravar e o que cada vídeo deve gerar.
+  </div>
+
+  <div class="grid-2">
+    <div class="card" style="border-left: 4px solid var(--vermelho);">
+      <div class="card-titulo" style="color:var(--vermelho);">Erros Estratégicos Atuais</div>
+      <div class="lista-item"><span class="lista-item-check check-vermelho">✗</span> Conteúdo operacional demais — mostra o que faz, não o resultado</div>
+      <div class="lista-item"><span class="lista-item-check check-vermelho">✗</span> Vida pessoal sem conexão narrativa com a profissão</div>
+      <div class="lista-item"><span class="lista-item-check check-vermelho">✗</span> Excesso de educação técnica sem contexto emocional</div>
+      <div class="lista-item"><span class="lista-item-check check-vermelho">✗</span> Sem storytelling — sem início, meio e fim</div>
+      <div class="lista-item"><span class="lista-item-check check-vermelho">✗</span> Posts aleatórios sem sequência lógica</div>
+      <div class="lista-item"><span class="lista-item-check check-vermelho">✗</span> Sem funil — todo conteúdo é topo, nunca fundo</div>
+    </div>
+    <div class="card" style="border-left: 4px solid var(--verde);">
+      <div class="card-titulo" style="color:var(--verde);">O Que Pode Funcionar</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">✓</span> Vídeos de pacientes reais com narrativa de transformação</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">✓</span> Bastidores humanizados com contexto profissional</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">✓</span> Educação em formato de resposta a dúvidas reais</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">✓</span> Conteúdo pessoal conectado a movimento e bem-estar</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">✓</span> Depoimentos tratados como micro-histórias</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">✓</span> Reels curtos com hook e CTA direto</div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO: PONTOS FORTES -->
+<section class="secao" id="forcas">
+  <div class="secao-numero">05 — Pontos Fortes</div>
+  <h2 class="secao-titulo">Seus Maiores Ativos Estratégicos</h2>
+  <p class="secao-subtitulo">O que você já possui e precisa aprender a comunicar melhor.</p>
+
+  <div class="grid-3">
+    <div class="card" style="border-top:3px solid var(--azul);">
+      <div style="font-size:1.5rem; margin-bottom:8px;">🤝</div>
+      <div class="pilar-nome">Acolhimento genuíno</div>
+      <div class="pilar-desc">Pacientes sentem cuidado real. Isso gera retenção e indicação espontânea — ativo raramente ensinado.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--verde);">
+      <div style="font-size:1.5rem; margin-bottom:8px;">⭐</div>
+      <div class="pilar-nome">50 avaliações 5 estrelas</div>
+      <div class="pilar-desc">Prova social real e valiosa. 5.0 no Google é diferencial competitivo que precisa aparecer em todo material.</div>
+    </div>
+    <div class="card" style="border-top:3px solid #8B5CF6;">
+      <div style="font-size:1.5rem; margin-bottom:8px;">👵</div>
+      <div class="pilar-nome">Especialidade no idoso</div>
+      <div class="pilar-desc">Nicho com demanda crescente, alta fidelização e ticket maior. Poucos concorrentes comunicam isso bem.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--amarelo);">
+      <div style="font-size:1.5rem; margin-bottom:8px;">🎥</div>
+      <div class="pilar-nome">Conteúdo audiovisual</div>
+      <div class="pilar-desc">Você tem videomaker e registros reais de aulas. É matéria-prima premium que a maioria não tem.</div>
+    </div>
+    <div class="card" style="border-top:3px solid #EC4899;">
+      <div style="font-size:1.5rem; margin-bottom:8px;">💙</div>
+      <div class="pilar-nome">Conexão autêntica</div>
+      <div class="pilar-desc">Você converte sem estratégia. Com estratégia, essa conexão se multiplica em escala.</div>
+    </div>
+    <div class="card" style="border-top:3px solid var(--azul-escuro);">
+      <div style="font-size:1.5rem; margin-bottom:8px;">📍</div>
+      <div class="pilar-nome">Presença local forte</div>
+      <div class="pilar-desc">Site indexado, Google Meu Negócio ativo, endereço claro. Base sólida para autoridade regional.</div>
+    </div>
+  </div>
+
+  <div class="card-destaque" style="margin-top: 1.5rem;">
+    <div class="card-titulo-branco">Síntese Estratégica</div>
+    <p class="card-desc-branco" style="font-size: 14px; line-height: 1.8;">
+      Nayara já possui os elementos que clínicas maiores levam anos para construir: prova social real, especialidade clara, acolhimento genuíno e conteúdo audiovisual disponível. O trabalho estratégico agora é <strong style="color:white;">organizar, comunicar e sistematizar</strong> — não inventar do zero.
+    </p>
+  </div>
+</section>
+
+<!-- SEÇÃO: OPORTUNIDADES -->
+<section class="secao" id="oportunidades">
+  <div class="secao-numero">06 — Oportunidades</div>
+  <h2 class="secao-titulo">Oportunidades de Crescimento</h2>
+  <p class="secao-subtitulo">Onde está o potencial real de expansão — hoje e nos próximos 12 meses.</p>
+
+  <div class="grid-2">
+    <div>
+      <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--azul); margin-bottom:1rem;">Curto Prazo (0–3 meses)</div>
+      <div class="card" style="margin-bottom:1rem;">
+        <div class="lista-item"><span class="lista-item-check check-azul">1</span><div><strong>Reposicionamento digital</strong> — bio, fixados, destaques e primeiros posts estratégicos</div></div>
+        <div class="lista-item"><span class="lista-item-check check-azul">2</span><div><strong>Rotina de conteúdo sustentável</strong> — 2 Reels + 3-4 Stories/semana com pilares definidos</div></div>
+        <div class="lista-item"><span class="lista-item-check check-azul">3</span><div><strong>Ativação de prova social</strong> — transformar depoimentos existentes em conteúdo estratégico</div></div>
+        <div class="lista-item"><span class="lista-item-check check-azul">4</span><div><strong>Atualização do site</strong> — hero, especialidades, depoimentos e CTA de agendamento</div></div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:#8B5CF6; margin-bottom:1rem;">Médio Prazo (3–12 meses)</div>
+      <div class="card" style="margin-bottom:1rem;">
+        <div class="lista-item"><span class="lista-item-check" style="background:#EDE9FE; color:#7C3AED;">1</span><div><strong>Autoridade local consolidada</strong> — tornar-se referência em Pilates Clínico no Barreiro/Tirol</div></div>
+        <div class="lista-item"><span class="lista-item-check" style="background:#EDE9FE; color:#7C3AED;">2</span><div><strong>Aumento de ticket médio</strong> — comunicar valor premium que justifique ajuste de preços</div></div>
+        <div class="lista-item"><span class="lista-item-check" style="background:#EDE9FE; color:#7C3AED;">3</span><div><strong>Expansão de equipe</strong> — trazer 1 profissional parceiro, reduzindo dependência operacional</div></div>
+        <div class="lista-item"><span class="lista-item-check" style="background:#EDE9FE; color:#7C3AED;">4</span><div><strong>Programa estruturado</strong> — criar pacote de acompanhamento com método próprio</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+  <div class="secao-numero" style="margin-bottom:1rem;">Gargalos Estratégicos que precisam ser resolvidos</div>
+  <table class="tabela">
+    <thead>
+      <tr><th>Gargalo</th><th>Impacto Atual</th><th>Solução</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Dependência da operadora</strong></td>
+        <td>Você para de atender, a clínica para. Não escala.</td>
+        <td>Estruturar processos + adicionar profissional</td>
+      </tr>
+      <tr>
+        <td><strong>Conteúdo sem direcionamento</strong></td>
+        <td>Videomaker contratado sem estratégia = dinheiro perdido</td>
+        <td>Guia de filmagem + pilares editoriais (ver Seção 08)</td>
+      </tr>
+      <tr>
+        <td><strong>Percepção de valor baixa</strong></td>
+        <td>Agenda cheia mas dificuldade para aumentar preços</td>
+        <td>Posicionamento premium + comunicação de transformação</td>
+      </tr>
+      <tr>
+        <td><strong>Stories sem estratégia</strong></td>
+        <td>Presença diária sem resultado em conversão</td>
+        <td>Rotina simples com objetivo por tipo de story</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- SEÇÃO: PILARES -->
+<section class="secao" id="pilares">
+  <div class="secao-numero">07 — Pilares de Conteúdo</div>
+  <h2 class="secao-titulo">Os 6 Pilares Editoriais</h2>
+  <p class="secao-subtitulo">Todo post tem um lar. Cada pilar tem um objetivo estratégico na jornada do seguidor.</p>
+
+  <div class="grid-3" style="margin-bottom:1.5rem;">
+    <div class="pilar-card" style="border-top-color: var(--azul);">
+      <div class="pilar-numero">PILAR 01</div>
+      <div class="pilar-nome">🎓 Autoridade</div>
+      <div class="pilar-desc">Conteúdo educativo que responde dúvidas reais dos seus pacientes. Mostra que você sabe mais do que os outros.</div>
+      <div style="margin-top:10px;"><span class="badge badge-azul">Reels educativos</span> <span class="badge badge-cinza">Carrossel</span></div>
+    </div>
+    <div class="pilar-card" style="border-top-color: var(--verde);">
+      <div class="pilar-numero">PILAR 02</div>
+      <div class="pilar-nome">🌟 Transformação</div>
+      <div class="pilar-desc">Resultados reais, antes e depois, histórias de pacientes. É o conteúdo que converte — mostra o que você entrega.</div>
+      <div style="margin-top:10px;"><span class="badge badge-verde">Depoimentos</span> <span class="badge badge-cinza">Casos</span></div>
+    </div>
+    <div class="pilar-card" style="border-top-color: #8B5CF6;">
+      <div class="pilar-numero">PILAR 03</div>
+      <div class="pilar-nome">💙 Humanização</div>
+      <div class="pilar-desc">Bastidores, rotina, vida pessoal conectada à filosofia de movimento e bem-estar. Cria proximidade e confiança.</div>
+      <div style="margin-top:10px;"><span class="badge" style="background:#F3E8FF; color:#7C3AED;">Stories</span> <span class="badge badge-cinza">Reels curtos</span></div>
+    </div>
+    <div class="pilar-card" style="border-top-color: var(--amarelo);">
+      <div class="pilar-numero">PILAR 04</div>
+      <div class="pilar-nome">🤝 Conexão</div>
+      <div class="pilar-desc">Conteúdo que gera identificação com o público. "Você também sente isso?" Engajamento + proximidade.</div>
+      <div style="margin-top:10px;"><span class="badge badge-amarelo">Perguntas</span> <span class="badge badge-cinza">Enquetes</span></div>
+    </div>
+    <div class="pilar-card" style="border-top-color: #EC4899;">
+      <div class="pilar-numero">PILAR 05</div>
+      <div class="pilar-nome">📋 Método</div>
+      <div class="pilar-desc">Como você trabalha, seu processo, o que diferencia seu atendimento. Posiciona como premium e justifica o ticket.</div>
+      <div style="margin-top:10px;"><span class="badge" style="background:#FCE7F3; color:#9D174D;">Carrossel</span> <span class="badge badge-cinza">Reels</span></div>
+    </div>
+    <div class="pilar-card" style="border-top-color: #DC2626;">
+      <div class="pilar-numero">PILAR 06</div>
+      <div class="pilar-nome">📅 Conversão</div>
+      <div class="pilar-desc">CTA direto — agende sua avaliação, vagas limitadas, como funciona o primeiro atendimento. Fundo do funil.</div>
+      <div style="margin-top:10px;"><span class="badge badge-vermelho">Story CTA</span> <span class="badge badge-cinza">Post direto</span></div>
+    </div>
+  </div>
+
+  <div class="card" style="background: var(--cinza-claro);">
+    <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--cinza); margin-bottom:12px;">Distribuição Semanal Recomendada</div>
+    <div class="barra-wrap">
+      <div class="barra-header"><span>Autoridade</span><span style="color:var(--azul);">30%</span></div>
+      <div class="barra-track"><div class="barra-fill" style="width:30%;"></div></div>
+    </div>
+    <div class="barra-wrap">
+      <div class="barra-header"><span>Transformação / Prova Social</span><span style="color:var(--azul);">25%</span></div>
+      <div class="barra-track"><div class="barra-fill" style="width:25%;"></div></div>
+    </div>
+    <div class="barra-wrap">
+      <div class="barra-header"><span>Humanização / Conexão</span><span style="color:var(--azul);">25%</span></div>
+      <div class="barra-track"><div class="barra-fill" style="width:25%;"></div></div>
+    </div>
+    <div class="barra-wrap">
+      <div class="barra-header"><span>Método + Conversão</span><span style="color:var(--azul);">20%</span></div>
+      <div class="barra-track"><div class="barra-fill" style="width:20%;"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO: PLANO -->
+<section class="secao" id="plano">
+  <div class="secao-numero">08 — Plano Estratégico</div>
+  <h2 class="secao-titulo">Plano de Ação Inicial</h2>
+  <p class="secao-subtitulo">Prioridades, ordem e impacto. O que fazer primeiro para sentir resultado rápido.</p>
+
+  <div class="roadmap-item">
+    <div class="roadmap-linha">
+      <div class="roadmap-circulo">1</div>
+      <div class="roadmap-reta"></div>
+    </div>
+    <div class="roadmap-conteudo">
+      <div class="roadmap-prazo">Semana 1 — Ajustes Rápidos</div>
+      <div class="roadmap-titulo">Reposicionamento do perfil</div>
+      <div class="card">
+        <div class="lista-item"><span class="lista-item-check check-azul">→</span>Reescrever a bio com nicho, localização e CTA</div>
+        <div class="lista-item"><span class="lista-item-check check-azul">→</span>Substituir post fixado da identidade visual por apresentação estratégica</div>
+        <div class="lista-item"><span class="lista-item-check check-azul">→</span>Reorganizar destaques: Método / Resultados / Depoimentos / Agenda</div>
+        <div class="lista-item"><span class="lista-item-check check-azul">→</span>Padronizar capas dos destaques com identidade visual</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="roadmap-item">
+    <div class="roadmap-linha">
+      <div class="roadmap-circulo">2</div>
+      <div class="roadmap-reta"></div>
+    </div>
+    <div class="roadmap-conteudo">
+      <div class="roadmap-prazo">Semanas 2–4 — Fundação Editorial</div>
+      <div class="roadmap-titulo">Primeiros conteúdos estratégicos</div>
+      <div class="card">
+        <div class="lista-item"><span class="lista-item-check check-verde">→</span>Gravar vídeo de apresentação: quem é Nayara, por que pilates clínico, quem ela atende</div>
+        <div class="lista-item"><span class="lista-item-check check-verde">→</span>Produzir 2 Reels de autoridade (dores tratadas, mitos do pilates)</div>
+        <div class="lista-item"><span class="lista-item-check check-verde">→</span>Publicar 2 depoimentos de pacientes com contexto estratégico</div>
+        <div class="lista-item"><span class="lista-item-check check-verde">→</span>Iniciar rotina de Stories: 3x/semana com bastidores + 1 CTA</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="roadmap-item">
+    <div class="roadmap-linha">
+      <div class="roadmap-circulo">3</div>
+      <div class="roadmap-reta"></div>
+    </div>
+    <div class="roadmap-conteudo">
+      <div class="roadmap-prazo">Mês 2 — Consistência e Autoridade</div>
+      <div class="roadmap-titulo">Ritmo editorial sustentável</div>
+      <div class="card">
+        <div class="lista-item"><span class="lista-item-check" style="background:#EDE9FE; color:#7C3AED;">→</span>Consolidar cadência de 2 Reels + 1 carrossel/semana</div>
+        <div class="lista-item"><span class="lista-item-check" style="background:#EDE9FE; color:#7C3AED;">→</span>Atualizar site com seções estratégicas (hero, especialidades, depoimentos)</div>
+        <div class="lista-item"><span class="lista-item-check" style="background:#EDE9FE; color:#7C3AED;">→</span>Gravar série de vídeos com videomaker usando guia de filmagem</div>
+        <div class="lista-item"><span class="lista-item-check" style="background:#EDE9FE; color:#7C3AED;">→</span>Implementar rotina de coleta de depoimentos de pacientes</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="roadmap-item">
+    <div class="roadmap-linha">
+      <div class="roadmap-circulo">4</div>
+    </div>
+    <div class="roadmap-conteudo">
+      <div class="roadmap-prazo">Mês 3+ — Escala e Expansão</div>
+      <div class="roadmap-titulo">Da operação para a autoridade</div>
+      <div class="card">
+        <div class="lista-item"><span class="lista-item-check check-amarelo">→</span>Avaliar possibilidade de novo profissional na equipe</div>
+        <div class="lista-item"><span class="lista-item-check check-amarelo">→</span>Revisar precificação com base no posicionamento premium estabelecido</div>
+        <div class="lista-item"><span class="lista-item-check check-amarelo">→</span>Criar pacote de acompanhamento com método estruturado</div>
+        <div class="lista-item"><span class="lista-item-check check-amarelo">→</span>Considerar conteúdo de mídia paga local (impulsionamento de Reels de resultado)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO: GUIA VIDEOMAKER -->
+<section class="secao" id="videomaker">
+  <div class="secao-numero">09 — Guia de Filmagens</div>
+  <h2 class="secao-titulo">Guia para o Videomaker</h2>
+  <p class="secao-subtitulo">O que filmar, quando, como e com qual objetivo estratégico em cada cena.</p>
+
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-titulo">Cenas de Autoridade</div>
+      <div class="lista-item"><span class="lista-item-check check-azul">▶</span>Nayara explicando exercício com paciente (câmera lateral)</div>
+      <div class="lista-item"><span class="lista-item-check check-azul">▶</span>Close nos equipamentos do Pilates (Reformer, Cadillac)</div>
+      <div class="lista-item"><span class="lista-item-check check-azul">▶</span>Nayara corrigindo postura com explicação em voz over</div>
+      <div class="lista-item"><span class="lista-item-check check-azul">▶</span>Demonstração de exercício simples "que qualquer um pode fazer"</div>
+      <div class="lista-item"><span class="lista-item-check check-azul">▶</span>Nayara falando para câmera: "você sabia que..."</div>
+    </div>
+    <div class="card">
+      <div class="card-titulo">Cenas de Humanização</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">▶</span>Chegada na clínica, abertura do espaço (timelapse)</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">▶</span>Momento de conversa com paciente idoso (com autorização)</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">▶</span>Nayara se preparando — bastidores sem ser forçado</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">▶</span>Detalhes do ambiente: plantas, luz, equipamentos organizados</div>
+      <div class="lista-item"><span class="lista-item-check check-verde">▶</span>Reação genuína de um paciente após a aula</div>
+    </div>
+    <div class="card">
+      <div class="card-titulo">Cenas de Conversão</div>
+      <div class="lista-item"><span class="lista-item-check check-amarelo">▶</span>Nayara convida para agendar avaliação (direto para câmera)</div>
+      <div class="lista-item"><span class="lista-item-check check-amarelo">▶</span>Tour pela clínica — "é aqui que acontece a transformação"</div>
+      <div class="lista-item"><span class="lista-item-check check-amarelo">▶</span>Paciente falando resultado (depoimento natural, não ensaiado)</div>
+      <div class="lista-item"><span class="lista-item-check check-amarelo">▶</span>Paciente antes e depois (com autorização e contexto)</div>
+    </div>
+    <div class="card">
+      <div class="card-titulo">Técnica de Filmagem</div>
+      <div class="lista-item"><span class="lista-item-check check-azul">📐</span>Sempre filmem em formato vertical (9:16) para Reels e Stories</div>
+      <div class="lista-item"><span class="lista-item-check check-azul">💡</span>Iluminação natural ou softbox — nunca luz dura lateral</div>
+      <div class="lista-item"><span class="lista-item-check check-azul">🎙</span>Nayara falando para câmera deve usar microfone de lapela</div>
+      <div class="lista-item"><span class="lista-item-check check-azul">🎬</span>3 tomadas de cada cena — nunca depender de uma só</div>
+      <div class="lista-item"><span class="lista-item-check check-azul">⏱</span>Reels ideais: 15–30 segundos com corte dinâmico</div>
+    </div>
+  </div>
+</section>
+
+<!-- SEÇÃO: CALENDÁRIO EDITORIAL -->
+<section class="secao" id="calendario">
+  <div class="secao-numero">10 — Calendário Editorial</div>
+  <h2 class="secao-titulo">Rotina de Conteúdo Semanal</h2>
+  <p class="secao-subtitulo">Simples, sustentável e estratégico. Você não precisa viver para produzir conteúdo.</p>
+
+  <div class="texto-destaque">
+    Meta: 2 Reels + 1 post estático + 3–4 Stories por semana. Menos de 2 horas de produção.
+  </div>
+
+  <div class="grid-3" style="grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 2rem;">
+    <!-- Segunda -->
+    <div class="dia-card">
+      <div class="dia-header">Segunda</div>
+      <div class="dia-body">
+        <div class="dia-item"><span class="dia-tag" style="background:#E8EDFF;color:#1E2A78;">AUTH</span>Reel educativo<br><span style="font-size:10px;color:var(--cinza);">"Você sabia que..."</span></div>
+        <div class="dia-item"><span class="dia-tag" style="background:#F3E8FF;color:#7C3AED;">STORY</span>Bastidores da semana</div>
+      </div>
+    </div>
+    <!-- Terça -->
+    <div class="dia-card">
+      <div class="dia-header">Terça</div>
+      <div class="dia-body">
+        <div class="dia-item"><span class="dia-tag" style="background:#F3E8FF;color:#7C3AED;">STORY</span>Dica rápida do dia<br><span style="font-size:10px;color:var(--cinza);">Enquete interativa</span></div>
+      </div>
+    </div>
+    <!-- Quarta -->
+    <div class="dia-card">
+      <div class="dia-header">Quarta</div>
+      <div class="dia-body">
+        <div class="dia-item"><span class="dia-tag" style="background:#D1FAE5;color:#065F46;">PROVA</span>Post depoimento<br><span style="font-size:10px;color:var(--cinza);">Caso real + contexto</span></div>
+        <div class="dia-item"><span class="dia-tag" style="background:#F3E8FF;color:#7C3AED;">STORY</span>Repost do post</div>
+      </div>
+    </div>
+    <!-- Quinta -->
+    <div class="dia-card">
+      <div class="dia-header">Quinta</div>
+      <div class="dia-body">
+        <div class="dia-item"><span class="dia-tag" style="background:#FCE7F3;color:#9D174D;">HUM</span>Reel humanizado<br><span style="font-size:10px;color:var(--cinza);">Bastidor / rotina</span></div>
+        <div class="dia-item"><span class="dia-tag" style="background:#F3E8FF;color:#7C3AED;">STORY</span>Bastidores da aula</div>
+      </div>
+    </div>
+    <!-- Sexta -->
+    <div class="dia-card">
+      <div class="dia-header">Sexta</div>
+      <div class="dia-body">
+        <div class="dia-item"><span class="dia-tag" style="background:#FEF3C7;color:#92400E;">CTA</span>Story de conversão<br><span style="font-size:10px;color:var(--cinza);">"Agenda aberta" ou vaga</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="background: var(--cinza-claro);">
+    <div style="font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--cinza); margin-bottom:12px;">Legenda dos Tipos de Conteúdo</div>
+    <div style="display:flex; flex-wrap:wrap; gap:10px;">
+      <span class="badge" style="background:#E8EDFF;color:#1E2A78;">AUTH — Autoridade</span>
+      <span class="badge badge-verde">PROVA — Prova Social</span>
+      <span class="badge" style="background:#FCE7F3;color:#9D174D;">HUM — Humanização</span>
+      <span class="badge badge-amarelo">CTA — Conversão</span>
+      <span class="badge" style="background:#F3E8FF;color:#7C3AED;">STORY — Stories</span>
+      <span class="badge badge-cinza">EDU — Educativo</span>
+    </div>
+  </div>
+
+  <div class="sep"></div>
+
+  <!-- IDEIAS DE REELS -->
+  <div class="secao-numero" style="margin-bottom:1rem;">Ideias de Reels com Hook</div>
+  <table class="tabela">
+    <thead>
+      <tr><th>Hook (primeiros 3 seg)</th><th>Tipo</th><th>Pilar</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>"Se você tem mais de 60 anos e sente dor, isso não é normal."</td>
+        <td><span class="badge badge-azul">Reel curto</span></td>
+        <td>Autoridade + Conversão</td>
+      </tr>
+      <tr>
+        <td>"Minha paciente de 72 anos não conseguia subir escada. Hoje ela faz Pilates."</td>
+        <td><span class="badge badge-verde">Reel depoimento</span></td>
+        <td>Transformação</td>
+      </tr>
+      <tr>
+        <td>"3 exercícios que todo idoso deveria fazer em casa — sem equipamento."</td>
+        <td><span class="badge badge-azul">Reel educativo</span></td>
+        <td>Autoridade</td>
+      </tr>
+      <tr>
+        <td>"Por que o Pilates Clínico é diferente do Pilates de academia?"</td>
+        <td><span class="badge badge-azul">Reel educativo</span></td>
+        <td>Método + Autoridade</td>
+      </tr>
+      <tr>
+        <td>"Chegou mais uma caixa de equipamento. A clínica está crescendo."</td>
+        <td><span class="badge" style="background:#FCE7F3;color:#9D174D;">Reel bastidor</span></td>
+        <td>Humanização</td>
+      </tr>
+      <tr>
+        <td>"Essa semana tive um momento que me lembrou por que escolhi essa profissão."</td>
+        <td><span class="badge" style="background:#FCE7F3;color:#9D174D;">Reel pessoal</span></td>
+        <td>Conexão</td>
+      </tr>
+      <tr>
+        <td>"Você sabia que dor lombar crônica tem solução — sem cirurgia?"</td>
+        <td><span class="badge badge-azul">Reel educativo</span></td>
+        <td>Autoridade + Conversão</td>
+      </tr>
+      <tr>
+        <td>"Avaliação gratuita: 30 minutos que podem mudar como você se move."</td>
+        <td><span class="badge badge-amarelo">Reel CTA</span></td>
+        <td>Conversão</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- RODAPÉ -->
+<div style="text-align:center; padding: 4rem 0 2rem; border-top: 1px solid var(--cinza-borda);">
+  <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:12px;">
+    <svg width="28" height="32" viewBox="0 0 60 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 5L30 45L55 5" stroke="#3B4CC0" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      <circle cx="30" cy="62" r="7" fill="#3B4CC0"/>
+    </svg>
+    <span style="font-size:14px; font-weight:700; color:var(--azul-escuro);">YM Marketing & Negócios</span>
+  </div>
+  <p style="font-size:12px; color:var(--cinza);">Material elaborado exclusivamente para Nayara Cortez · Maio 2025</p>
+  <p style="font-size:11px; color:var(--cinza); margin-top:4px;">Diagnóstico Estratégico Digital — Confidencial</p>
+</div>
+
+</div><!-- /page -->
+</body>
+</html>
